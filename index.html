@@ -10,55 +10,66 @@
             color: #00ffcc;
             font-family: 'Tajawal', sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 150px;
         }
-        .contact {
-    background-color: #111;
-    color: #00ffcc;
-    padding: 30px;
-    margin: 40px auto;
-    width: 60%;
-    border-radius: 15px;
-    border: 1px solid #00ffcc;
-}
+
+        .dark {
+            background-color: #0a0a0a;
+            color: #00ffcc;
+        }
+
+        nav {
+            background-color: #111;
+            padding: 8px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid #00ffcc;
+        }
+
+        nav a {
+            color: #00ffcc;
+            margin: 0 10px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        nav button {
+            background-color: #722049;
+            color: black;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0;
+
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px #00ffcc; }
+            50% { box-shadow: 0 0 40px #00ffcc, 0 0 80px #00ffcc; }
+            100% { box-shadow: 0 0 10px #00ffcc; }
+        }
 
         h1 {
             font-size: 50px;
             animation: fadeIn 1.5s ease;
         }
 
-
-     @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid #00ffcc;
+            margin-top: 5px;
+            animation: pulse 2s ease-in-out infinite;
         }
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 10px #00ffcc;
-    }
-    50% {
-        box-shadow: 0 0 40px #00ffcc, 0 0 80px #00ffcc;
-    }
-    100% {
-        box-shadow: 0 0 10px #00ffcc;
-    }
-}
-
-      img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 3px solid #00ffcc;
-    margin-top: 20px;
-    animation: pulse 2s ease-in-out infinite;
-}
-
         .about {
             background-color: #111;
             padding: 30px;
@@ -83,6 +94,16 @@
             width: 25%;
         }
 
+        .contact {
+            background-color: #111;
+            color: #00ffcc;
+            padding: 30px;
+            margin: 40px auto;
+            width: 60%;
+            border-radius: 15px;
+            border: 1px solid #00ffcc;
+        }
+
         a {
             color: #ffffff;
             font-size: 20px;
@@ -101,43 +122,40 @@
         }
 
         button:hover {
-            background-color: #00ffcc;
+            background-color: #ff00ff;
             color: white;
         }
-        nav {
+        #timer {
             background-color: #111;
-            padding: 15px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            border-bottom: 2px solid  #00ffcc;
+            color: #ff00ff;
+            padding: 8px;
+            margin: 20px auto;
+            width: 15%;
+            border-radius: 15px;
+            border: 1px solid #ff00ff;
+            font-size: 14px;
         }
-        nav a{
-            color: #00ffcc;
-            margin: 0 20px;
-            font-size: 18px;
-            text-decoration: none;
-        }
-        nav a{
-            color: #00ffcc;
-        }
-
-  
-  </style>
+    </style>
 </head>
 <body>
+
     <nav>
         <a href="#">Home</a>
         <a href="#">Who am I?</a>
-        <a href="#">services</a>
-        <a href="#">contact</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        <button onclick="toggleMode()" id="modeBtn">🌙</button>
     </nav>
 
     <img src="1logo.jpg" alt="Neon Media">
 
-    <h1>مرحباً، أنا الماس</h1>
-    <p>مصمم ومطور ويب</p>
+    <h1 id="title" onclick="toggleTitle()" style="cursor:pointer;">الماس & غزالة</h1>
+    <p>Design - Code - Create</p>
 
+    <div id="timer">
+        <h3>Injecting Virus</h3>
+        <p id="countdown">10</p>
+    </div>
     <div class="about">
         <h2>Who am I?</h2>
         <p>Im The Boss !!</p>
@@ -147,35 +165,72 @@
         <h2>My Services</h2>
 
         <div class="service-box">
-            <h3>Graphic Design🎨</h3>
+            <h3>Graphic Design 🎨</h3>
             <p>تصميم شعارات وبوسترات احترافية</p>
         </div>
 
         <div class="service-box">
-            <h3>Web Devlopment💻</h3>
+            <h3>Web Development 💻</h3>
             <p>بناء مواقع ويب حديثة وجميلة</p>
         </div>
 
         <div class="service-box">
-            <h3>Social MEdia Managment📱</h3>
+            <h3>Social Media Management 📱</h3>
             <p>إدارة صفحات السوشيال ميديا</p>
         </div>
 
     </div>
-<div class="contact">
-    <h2>تواصل معي</h2>
-    <p>📧 Diamondofficial187@gmail.com</p>
-    <p>📱Call ME : +971526242771</p>
-    <a href="https://wa.me/00971526242771" target="_blank">
-        <button>Whatsapp</button>
-    </a>
-    <a href="https://www.instagram.com/neon.media1" target="_blank"><button>instagram</button></a>
 
-</div>
-    <br>
-    
+    <div class="contact">
+        <h2>Contact Me</h2>
+        <p>📧 Diamondofficial187@gmail.com</p>
+        <p>📱 Call ME : +971526242771</p>
+        <a href="https://wa.me/00971526242771" target="_blank">
+            <button>Whatsapp</button>
+        </a>
+        <a href="https://www.instagram.com/neon.media1" target="_blank">
+            <button>Instagram</button>
+        </a>
+    </div>
+
     <br><br>
-    <button>تواصل معي</button>
+    <button onclick="showmessage()">Contact Me</button>
+
+    <script>
+        alert("Welcome to Neon Media!");
+
+        function showmessage() {
+            alert("Thank you! We will contact you soon");
+        }
+
+        function toggleTitle() {
+            var title = document.getElementById("title");
+            if (title.textContent === "الماس & غزالة") {
+                title.innerHTML = "Neon Is The Best";
+            } else {
+                title.innerHTML = "الماس & غزالة";
+            }
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle("dark");
+            var btn = document.getElementById("modeBtn");
+            if (btn.innerHTML === "🌙") {
+                btn.innerHTML = "☀️";
+            } else {
+                btn.innerHTML = "🌙";
+            }
+        }
+        var count = 5;
+        var timer = setInterval(function() {
+            count--;
+            document.getElementById("countdown").innerHTML = count;
+            if (count === 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "you're Hacked!";
+            }
+        },1000);
+    </script>
 
 </body>
 </html>
