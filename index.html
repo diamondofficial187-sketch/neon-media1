@@ -38,28 +38,26 @@
                 transform: translateY(0);
             }
         }
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px #00ffcc;
+    }
+    50% {
+        box-shadow: 0 0 40px #00ffcc, 0 0 80px #00ffcc;
+    }
+    100% {
+        box-shadow: 0 0 10px #00ffcc;
+    }
+}
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        p {
-            font-size: 20px;
-        }
-
-        img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 3px solid #00ffcc;
-            margin-top: 20px;
-            animation: rotate 10s linear infinite;
-        }
+      img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #00ffcc;
+    margin-top: 20px;
+    animation: pulse 2s ease-in-out infinite;
+}
 
         .about {
             background-color: #111;
@@ -135,7 +133,7 @@
         <a href="#">contact</a>
     </nav>
 
-    <img src="photo.jpg" alt="الماس">
+    <img src="1LOGO.png" alt="Neon Media">
 
     <h1>مرحباً، أنا الماس</h1>
     <p>مصمم ومطور ويب</p>
