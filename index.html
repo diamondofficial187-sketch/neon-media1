@@ -135,6 +135,20 @@
             border: 1px solid #ff00ff;
             font-size: 14px;
         }
+
+        #welcomeBox {
+            margin: 20px auto;
+            width: 40%;
+        }
+        #nameInput {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 2px solid #00ffcc;
+            background-color: #111;
+            color: #00ffcc;
+            width: 60%;
+        }
     </style>
 </head>
 <body>
@@ -156,6 +170,12 @@
         <h3>Injecting Virus</h3>
         <p id="countdown">10</p>
     </div>
+    <div id="WelcomeBox">
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button onclick="saveName()">save</button>
+        <p id="welcomeMsg"></p>
+    </div>
+ 
     <div class="about">
         <h2>Who am I?</h2>
         <p>Im The Boss !!</p>
@@ -221,6 +241,21 @@
                 btn.innerHTML = "🌙";
             }
         }
+function saveName() {
+    var name = document.getElementById("nameInput").value;
+    localStorage.setItem("visitorName", name);
+    showWelcome();
+}
+
+function showWelcome() {
+    var name = localStorage.getItem("visitorName");
+    if (name) {
+        document.getElementById("welcomeMsg").innerHTML = "Welcome back, " + name + " ❤️";
+    }
+}
+
+showWelcome();
+
         var count = 5;
         var timer = setInterval(function() {
             count--;
