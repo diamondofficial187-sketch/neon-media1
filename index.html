@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Neon Media</title>
     <style>
         body {
             background-color: rgb(51, 58, 58);
             color: #00ffcc;
-            font-family: Arial;
+            font-family: 'Tajawal', sans-serif;
             text-align: center;
             margin-top: 50px;
         }
+        .contact {
+    background-color: #111;
+    color: #00ffcc;
+    padding: 30px;
+    margin: 40px auto;
+    width: 60%;
+    border-radius: 15px;
+    border: 1px solid #00ffcc;
+}
 
         h1 {
             font-size: 50px;
+            animation: fadeIn 1.5s ease;
+        }
+
+
+     @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         p {
@@ -26,6 +58,7 @@
             border-radius: 50%;
             border: 3px solid #00ffcc;
             margin-top: 20px;
+            animation: rotate 10s linear infinite;
         }
 
         .about {
@@ -53,7 +86,7 @@
         }
 
         a {
-            color: #ff00ff;
+            color: #ffffff;
             font-size: 20px;
             text-decoration: none;
         }
@@ -70,7 +103,7 @@
         }
 
         button:hover {
-            background-color: #ff00ff;
+            background-color: #00ffcc;
             color: white;
         }
         nav {
@@ -90,12 +123,13 @@
         nav a{
             color: #00ffcc;
         }
+
   
   </style>
 </head>
 <body>
     <nav>
-        <a href="#">home</a>
+        <a href="#">Home</a>
         <a href="#">Who am I?</a>
         <a href="#">services</a>
         <a href="#">contact</a>
@@ -107,33 +141,41 @@
     <p>مصمم ومطور ويب</p>
 
     <div class="about">
-        <h2>من أنا؟</h2>
-        <p>طالب إعلام جديد، شغوف بالتصميم والبرمجة وبناء براند Neon Media</p>
+        <h2>Who am I?</h2>
+        <p>Im The Boss !!</p>
     </div>
 
     <div class="services">
-        <h2>خدماتي</h2>
+        <h2>My Services</h2>
 
         <div class="service-box">
-            <h3>🎨 تصميم جرافيك</h3>
+            <h3>Graphic Design🎨</h3>
             <p>تصميم شعارات وبوسترات احترافية</p>
         </div>
 
         <div class="service-box">
-            <h3>💻 تطوير مواقع</h3>
+            <h3>Web Devlopment💻</h3>
             <p>بناء مواقع ويب حديثة وجميلة</p>
         </div>
 
         <div class="service-box">
-            <h3>📱 إدارة محتوى</h3>
+            <h3>Social MEdia Managment📱</h3>
             <p>إدارة صفحات السوشيال ميديا</p>
         </div>
 
     </div>
+<div class="contact">
+    <h2>تواصل معي</h2>
+    <p>📧 Diamondofficial187@gmail.com</p>
+    <p>📱Call ME : +971526242771</p>
+    <a href="https://wa.me/00971526242771" target="_blank">
+        <button>Whatsapp</button>
+    </a>
+    <a href="https://www.instagram.com/neon.media1" target="_blank"><button>instagram</button></a>
 
+</div>
     <br>
-    <a href="https://www.instagram.com/neon.media1" target="_blank">تابعني على انستاقرام</a>
-
+    
     <br><br>
     <button>تواصل معي</button>
 
