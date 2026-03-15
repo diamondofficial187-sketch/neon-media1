@@ -33,6 +33,7 @@
             font-size: 18px;
             text-decoration: none;
         }
+
         nav button {
             background-color: #722049;
             color: black;
@@ -43,7 +44,6 @@
             font-size: 18px;
             cursor: pointer;
             padding: 0;
-
         }
 
         @keyframes fadeIn {
@@ -70,6 +70,7 @@
             margin-top: 5px;
             animation: pulse 2s ease-in-out infinite;
         }
+
         .about {
             background-color: #111;
             padding: 30px;
@@ -82,6 +83,9 @@
         .services {
             margin: 40px auto;
             width: 80%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .service-box {
@@ -90,25 +94,9 @@
             border-radius: 15px;
             padding: 20px;
             margin: 15px;
-            display: inline-block;
             width: 25%;
         }
 
-        .flex-demo {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px auto;
-        }
-
-        .flex-box{
-            background-color: #111;
-            color: #00ffcc;
-            border: 1px solid #00ffcc;
-            padding: 20px;
-            font-size: 18px;
-        }
-        
         .contact {
             background-color: #111;
             color: #00ffcc;
@@ -140,6 +128,7 @@
             background-color: #ff00ff;
             color: white;
         }
+
         #timer {
             background-color: #111;
             color: #ff00ff;
@@ -155,6 +144,7 @@
             margin: 20px auto;
             width: 40%;
         }
+
         #nameInput {
             padding: 10px;
             font-size: 16px;
@@ -163,6 +153,22 @@
             background-color: #111;
             color: #00ffcc;
             width: 60%;
+        }
+
+        .flex-demo {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px auto;
+        }
+
+        .flex-box {
+            background-color: #111;
+            color: #00ffcc;
+            border: 1px solid #00ffcc;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -183,21 +189,28 @@
 
     <div id="timer">
         <h3>Injecting Virus</h3>
-        <p id="countdown">10</p>
+        <p id="countdown">5</p>
     </div>
-    <div id="WelcomeBox">
+
+    <div id="welcomeBox">
         <input type="text" id="nameInput" placeholder="Enter your name">
-        <button onclick="saveName()">save</button>
+        <button onclick="saveName()">Save</button>
         <p id="welcomeMsg"></p>
     </div>
- 
+
+    <div class="flex-demo">
+        <div class="flex-box">📦 Box 1</div>
+        <div class="flex-box">📦 Box 2</div>
+        <div class="flex-box">📦 Box 3</div>
+    </div>
+
     <div class="about">
         <h2>Who am I?</h2>
         <p>Im The Boss !!</p>
     </div>
 
     <div class="services">
-        <h2>My Services</h2>
+        <h2 style="width:100%">My Services</h2>
 
         <div class="service-box">
             <h3>Graphic Design 🎨</h3>
@@ -256,26 +269,21 @@
                 btn.innerHTML = "🌙";
             }
         }
-function saveName() {
-    var name = document.getElementById("nameInput").value;
-    localStorage.setItem("visitorName", name);
-    showWelcome();
-}
 
-function showWelcome() {
-    var name = localStorage.getItem("visitorName");
-    if (name) {
-        document.getElementById("welcomeMsg").innerHTML = "Welcome back, " + name + " ❤️";
-    }
-}
-<div class="flex-demo">
-    <div class="flex-demo">box 1</div>
-    <div class="flex-demo">box 2</div>
-    <div class="flex-demo">box 3</div>
-</div>
+        function saveName() {
+            var name = document.getElementById("nameInput").value;
+            localStorage.setItem("visitorName", name);
+            showWelcome();
+        }
 
+        function showWelcome() {
+            var name = localStorage.getItem("visitorName");
+            if (name) {
+                document.getElementById("welcomeMsg").innerHTML = "Welcome back, " + name + " ❤️";
+            }
+        }
 
-showWelcome();
+        showWelcome();
 
         var count = 5;
         var timer = setInterval(function() {
@@ -285,7 +293,7 @@ showWelcome();
                 clearInterval(timer);
                 document.getElementById("countdown").innerHTML = "you're Hacked!";
             }
-        },1000);
+        }, 1000);
     </script>
 
 </body>
