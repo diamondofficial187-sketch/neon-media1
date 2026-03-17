@@ -117,8 +117,9 @@
 
     #contact .contact-inner { max-width: 700px; margin: 60px auto 0; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 52px 48px; text-align: center; }
     .contact-items { display: flex; flex-direction: column; gap: 18px; margin-bottom: 36px; }
-    .contact-item { display: flex; align-items: center; gap: 14px; background: rgba(0,255,204,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; font-size: 15px; transition: border-color 0.25s; text-align: right; }
-    .contact-item:hover { border-color: rgba(0,255,204,0.35); }
+.contact-item { display: flex; align-items: center; gap: 14px; background: rgba(0,255,204,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; font-size: 15px; transition: border-color 0.25s; text-align: right; min-width: 0; overflow: hidden; }
+.contact-item span:first-child { font-size: 20px; flex-shrink: 0; }
+.contact-item span:last-child { word-break: break-all; min-width: 0; flex: 1; }    .contact-item:hover { border-color: rgba(0,255,204,0.35); }
     .contact-item span:first-child { font-size: 20px; }
     .contact-form { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; text-align: right; }
     .contact-form input, .contact-form textarea { width: 100%; padding: 13px 18px; font-size: 15px; font-family: 'Tajawal', sans-serif; border-radius: 8px; border: 1.5px solid var(--border); background: rgba(0,255,204,0.03); color: var(--neon); outline: none; transition: border-color 0.25s; resize: none; }
@@ -162,17 +163,28 @@
     body.light nav { background: rgba(240,244,244,0.9); }
     body.light h1.hero-title, body.light .section-title, body.light .service-card h3, body.light .grid-item h3 { color: #0a1e1c; }
 
-    @media (max-width: 768px) {
-      #about .about-grid { grid-template-columns: 1fr; }
-      .grid-container { grid-template-columns: 1fr 1fr; }
-      .nav-links { gap: 10px; }
-      .nav-links a { font-size: 11px; }
-      .nav-logo { font-size: 14px; letter-spacing: 1px; }
-      .contact-inner { padding: 36px 24px; }
-      .input-row { flex-direction: column; }
-      footer { flex-direction: column; text-align: center; }
-    }
-    @media (max-width: 480px) { .grid-container { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: 1.5px solid var(--border); padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+  .hamburger span { display: block; width: 20px; height: 2px; background: var(--neon); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 99; background: rgba(5,10,14,0.97); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); padding: 20px 5%; flex-direction: column; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted); font-size: 16px; text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--border); font-family: 'Tajawal', sans-serif; }
+  .mobile-menu a:last-of-type { border-bottom: none; }
+  #about .about-grid { grid-template-columns: 1fr; }
+  .grid-container { grid-template-columns: 1fr 1fr; }
+  .nav-links { gap: 10px; }
+  .nav-links a { font-size: 11px; }
+  .nav-logo { font-size: 14px; letter-spacing: 1px; }
+  .contact-inner { padding: 28px 16px; }
+  .contact-item { font-size: 13px; padding: 12px 14px; }
+  .input-row { flex-direction: column; }
+  footer { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) { .grid-container { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -190,8 +202,15 @@
     <p id="lb-counter"></p>
   </div>
 
-  <nav>
+<nav>
     <span class="nav-logo">NEON MEDIA</span>
+<div style="display:flex; align-items:center; gap:10px;">
+      <button class="lang-btn" onclick="toggleLang()" id="langBtnMob">EN</button>
+      <button class="nav-toggle" onclick="toggleMode()" id="modeBtnMob">🌙</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
     <div class="nav-links">
       <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
       <a href="#pricing" data-ar="الأسعار" data-en="Pricing">الأسعار</a>
@@ -201,7 +220,15 @@
       <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
       <button class="nav-toggle" id="modeBtn" onclick="toggleMode()">🌙</button>
     </div>
-  </nav>
+</nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home"     onclick="closeMenu()">الرئيسية</a>
+    <a href="#about"    onclick="closeMenu()">عنّا</a>
+    <a href="#services" onclick="closeMenu()">الخدمات</a>
+    <a href="#pricing"  onclick="closeMenu()">الأسعار</a>
+    <a href="#contact"  onclick="closeMenu()">تواصل</a>
+  </div>
 
   <section id="home">
     <div class="avatar-wrap">
@@ -409,7 +436,7 @@
 
   <footer>
     <span class="footer-logo">NEON MEDIA</span>
-    <p>© 2025 Neon Media · وليد & غزالة · Dubai, UAE</p>
+    <p>· © 2025 Neon Media ·</p>
     <p style="color:var(--muted);font-size:12px;">Design — Code — Create</p>
   </footer>
 
@@ -435,8 +462,16 @@
       }
     }, 1000);
 
-    // REVEAL
-    var revObs = new IntersectionObserver(function(entries) {
+// HAMBURGER
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+    }
+        var revObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(function(el) { revObs.observe(el); });
@@ -444,7 +479,9 @@
     // MODE
     function toggleMode() {
       document.body.classList.toggle('light');
-      document.getElementById('modeBtn').textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
+      var icon = document.body.classList.contains('light') ? '🌙' : '☀️';
+      document.getElementById('modeBtn').textContent = icon;
+      document.getElementById('modeBtnMob').textContent = icon;
     }
 
     // SCROLL
@@ -463,6 +500,7 @@
     function toggleLang() {
       currentLang = currentLang === 'ar' ? 'en' : 'ar';
       document.getElementById('langBtn').textContent = currentLang === 'ar' ? 'EN' : 'AR';
+      document.getElementById('langBtnMob').textContent = currentLang === 'ar' ? 'EN' : 'AR';
       document.querySelectorAll('[data-ar]').forEach(function(el) {
         var val = el.getAttribute('data-' + currentLang);
         if (!val) return;
