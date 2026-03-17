@@ -372,7 +372,7 @@
         <div class="contact-item"><span>📧</span><span>Diamondofficial187@gmail.com</span></div>
         <div class="contact-item"><span>📱</span><span dir="ltr">+971 52 624 2771</span></div>
       </div>
-      <form class="contact-form" onsubmit="handleFormSubmit(event)">
+      <form class="contact-form" onsubmit="handleFormSubmit(event)" action ="https://formspree.io/f/mdawpyka" method="POST">
         <input type="text" name="name" placeholder="اسمك" data-placeholder-ar="اسمك" data-placeholder-en="Your Name" required>
         <input type="email" name="email" placeholder="بريدك الإلكتروني" data-placeholder-ar="بريدك الإلكتروني" data-placeholder-en="Your Email" required>
         <textarea name="message" placeholder="رسالتك..." data-placeholder-ar="رسالتك..." data-placeholder-en="Your message..." rows="4" required></textarea>
@@ -534,19 +534,31 @@
     });
 
     // CONTACT FORM
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      var status = document.getElementById('cf-status');
-      var btn = document.getElementById('cf-submit');
-      btn.disabled = true;
-      btn.textContent = currentLang === 'ar' ? 'جاري الإرسال...' : 'Sending...';
-      setTimeout(function() {
-        status.textContent = currentLang === 'ar' ? '✅ شكراً! سنتواصل معك قريباً.' : '✅ Thanks! We will contact you soon.';
+function handleFormSubmit(e) {
+    e.preventDefault();
+    var status = document.getElementById('cf-status');
+    var btn = document.getElementById('cf-submit');
+    btn.disabled = true;
+    btn.textContent = currentLang === 'ar' ? 'جاري الإرسال...' : 'Sending...';
+    fetch(e.target.action, {
+        method: 'POST',
+        body: new FormData(e.target),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(function(r) {
+        status.textContent = r.ok
+            ? (currentLang === 'ar' ? '✅ تم الإرسال بنجاح!' : '✅ Message sent!')
+            : (currentLang === 'ar' ? '❌ حدث خطأ!' : '❌ Error!');
+        if (r.ok) e.target.reset();
+    })
+    .catch(function() {
+        status.textContent = currentLang === 'ar' ? '❌ تأكد من اتصالك.' : '❌ Check connection.';
+    })
+    .finally(function() {
         btn.textContent = currentLang === 'ar' ? 'إرسال الرسالة' : 'Send Message';
         btn.disabled = false;
-        e.target.reset();
-      }, 1500);
-    }
+    });
+}
 
     // WEATHER
     function getWeather() {
