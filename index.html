@@ -224,17 +224,36 @@
       gap: 20px;
       margin-top: 40px;
     }
-    .grid-item:first-child { grid-column: span 3; }
-    .grid-item {
-      background: var(--surface);
-      border: 1px solid var(--neon);
-      border-radius: 12px;
-      padding: 30px;
-      text-align: center;
-      font-family: 'Orbitron', sans-serif;
-      color: var(--neon);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+
+.grid-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    font-family: 'Tajawal', sans-serif;
+    color: var(--text);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
+.grid-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,255,204,0.1);
+    border-color: var(--neon);
+}
+
+.grid-item h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin: 12px 0 8px;
+}
+
+.grid-item p {
+    font-size: 14px;
+    color: var(--muted);
+}}
 
     .about-item:hover {
       transform: translateY(-5px);
@@ -515,8 +534,8 @@
     </div>
 
     <div class="hero-cta">
-      <button class="btn-primary" onclick="scrollTo('#services')">استكشف خدماتنا</button>
-      <button class="btn-ghost" onclick="scrollTo('#contact')">تواصل معنا</button>
+      <button class="btn-primary" onclick="scrollToSection('#services')">استكشف خدماتنا</button>
+      <button class="btn-ghost" onclick="scrollToSection('#contact')">تواصل معنا</button>
     </div>
   </section>
 
@@ -613,18 +632,44 @@
     </div>
   </div>
 
-  <section id="grid-demo">
-    <p class="section-label">grid-demo</p>
-    <h2 class="section-title">CSS <span>grid</span></h2>
-    <div class="grid-container">
-      <div class="grid-item">box 1</div>
-      <div class="grid-item">box 2</div>
-      <div class="grid-item">box 3</div>
-      <div class="grid-item">box 4</div>
-      <div class="grid-item">box 5</div>
-      <div class="grid-item">box 6</div>
+<section id="portfolio">
+    <div class="reveal">
+        <p class="section-label">أعمالنا</p>
+        <h2 class="section-title">مشاريع <span>مختارة</span></h2>
     </div>
-  </section>
+    <div class="grid-container reveal">
+        <div class="grid-item">
+            <div class="service-icon">🎨</div>
+            <h3>Logo Design</h3>
+            <p>تصميم شعار لشركة تقنية</p>
+        </div>
+        <div class="grid-item">
+            <div class="service-icon">💻</div>
+            <h3>Web Development</h3>
+            <p>موقع متكامل لمتجر إلكتروني</p>
+        </div>
+        <div class="grid-item">
+            <div class="service-icon">📱</div>
+            <h3>Social Media</h3>
+            <p>إدارة حساب انستاقرام لمطعم</p>
+        </div>
+        <div class="grid-item">
+            <div class="service-icon">🎬</div>
+            <h3>Video Editing</h3>
+            <p>مونتاج إعلان تجاري</p>
+        </div>
+        <div class="grid-item">
+            <div class="service-icon">🖼️</div>
+            <h3>Brand Identity</h3>
+            <p>هوية بصرية كاملة لعلامة تجارية</p>
+        </div>
+        <div class="grid-item">
+            <div class="service-icon">📊</div>
+            <h3>Marketing</h3>
+            <p>خطة تسويقية رقمية متكاملة</p>
+        </div>
+    </div>
+</section>
 
   <section id="weather">
     <p class="section-label">Live Data</p>
@@ -682,7 +727,7 @@
     }
 
     // Smooth scroll
-    function scrollTo(selector) {
+    function scrollToSection(selector) {
       document.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -746,6 +791,10 @@
         document.getElementById('weatherResult').textContent = '❌ Error!';
       }
     }
+
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+    console.log('تم الضغط على الزر!');
+});
   </script>
 
 </body>
