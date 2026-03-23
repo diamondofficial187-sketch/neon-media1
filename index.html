@@ -117,10 +117,10 @@
 
     #contact .contact-inner { max-width: 700px; margin: 60px auto 0; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 52px 48px; text-align: center; }
     .contact-items { display: flex; flex-direction: column; gap: 18px; margin-bottom: 36px; }
-.contact-item { display: flex; align-items: center; gap: 14px; background: rgba(0,255,204,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; font-size: 15px; transition: border-color 0.25s; text-align: right; min-width: 0; overflow: hidden; }
-.contact-item span:first-child { font-size: 20px; flex-shrink: 0; }
-.contact-item span:last-child { word-break: break-all; min-width: 0; flex: 1; }    .contact-item:hover { border-color: rgba(0,255,204,0.35); }
-    .contact-item span:first-child { font-size: 20px; }
+    .contact-item { display: flex; align-items: center; gap: 14px; background: rgba(0,255,204,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; font-size: 15px; transition: border-color 0.25s; text-align: right; min-width: 0; overflow: hidden; }
+    .contact-item span:first-child { font-size: 20px; flex-shrink: 0; }
+    .contact-item span:last-child { word-break: break-all; min-width: 0; flex: 1; }
+    .contact-item:hover { border-color: rgba(0,255,204,0.35); }
     .contact-form { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; text-align: right; }
     .contact-form input, .contact-form textarea { width: 100%; padding: 13px 18px; font-size: 15px; font-family: 'Tajawal', sans-serif; border-radius: 8px; border: 1.5px solid var(--border); background: rgba(0,255,204,0.03); color: var(--neon); outline: none; transition: border-color 0.25s; resize: none; }
     .contact-form input:focus, .contact-form textarea:focus { border-color: var(--neon); }
@@ -163,6 +163,28 @@
     body.light nav { background: rgba(240,244,244,0.9); }
     body.light h1.hero-title, body.light .section-title, body.light .service-card h3, body.light .grid-item h3 { color: #0a1e1c; }
 
+    /* الأزرار العائمة */
+    .wa-float, .ig-float {
+      position: fixed; right: 30px; z-index: 999; width: 54px; height: 54px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 26px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float { bottom: 30px; background: #25d366; box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+    .ig-float { bottom: 95px; background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); box-shadow: 0 4px 20px rgba(220,39,67,0.5); }
+    .wa-float:hover, .ig-float:hover { transform: scale(1.1); }
+
+    /* التولتيب */
+    .wa-float::before, .ig-float::before {
+      content: attr(data-tooltip);
+      position: absolute; right: 64px;
+      background: rgba(5,10,14,0.9); color: var(--neon);
+      font-family: 'Tajawal', sans-serif; font-size: 13px;
+      padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border);
+      white-space: nowrap; opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .wa-float:hover::before, .ig-float:hover::before { opacity: 1; }
+
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: 1.5px solid var(--border); padding: 8px 10px; border-radius: 8px; cursor: pointer; }
@@ -187,20 +209,9 @@
 @media (max-width: 480px) { .grid-container { grid-template-columns: 1fr; } }
 
 @media (min-width: 769px) {
-  #langBtnMob, #modeBtnMob {
-    display: none;
-  }
+  #langBtnMob, #modeBtnMob { display: none; }
+  .hamburger { display: none; }
 }
-
-@media (min-width: 769px) {
-  #langBtnMob, #modeBtnMob {
-    display: none;
-  }
-  .hamburger {
-    display: none;
-  }
-}
-
   </style>
 </head>
 <body>
@@ -415,7 +426,7 @@
         <div class="contact-item"><span>📧</span><span>Diamondofficial187@gmail.com</span></div>
         <div class="contact-item"><span>📱</span><span dir="ltr">+971 52 624 2771</span></div>
       </div>
-      <form class="contact-form" onsubmit="handleFormSubmit(event)" action ="https://formspree.io/f/mdawpyka" method="POST">
+      <form class="contact-form" onsubmit="handleFormSubmit(event)" action="https://formspree.io/f/mdawpyka" method="POST">
         <input type="text" name="name" placeholder="اسمك" data-placeholder-ar="اسمك" data-placeholder-en="Your Name" required>
         <input type="email" name="email" placeholder="بريدك الإلكتروني" data-placeholder-ar="بريدك الإلكتروني" data-placeholder-en="Your Email" required>
         <textarea name="message" placeholder="رسالتك..." data-placeholder-ar="رسالتك..." data-placeholder-en="Your message..." rows="4" required></textarea>
@@ -456,6 +467,10 @@
     <p style="color:var(--muted);font-size:12px;">Design — Code — Create</p>
   </footer>
 
+  <!-- الأزرار العائمة -->
+  <a href="https://wa.me/00971526242771" target="_blank" class="wa-float" id="waFloat" data-tooltip="واتساب">💬</a>
+  <a href="https://www.instagram.com/neon.media1" target="_blank" class="ig-float" id="igFloat" data-tooltip="انستاقرام">📸</a>
+
   <script>
     // COUNTDOWN
     var cdCount = 5;
@@ -478,7 +493,7 @@
       }
     }, 1000);
 
-// HAMBURGER
+    // HAMBURGER
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
       document.getElementById('hamburger').classList.toggle('open');
@@ -487,15 +502,16 @@
       document.getElementById('mobileMenu').classList.remove('open');
       document.getElementById('hamburger').classList.remove('open');
     }
-        var revObs = new IntersectionObserver(function(entries) {
+
+    var revObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(function(el) { revObs.observe(el); });
 
-    // MODE
+    // MODE - تم إصلاح الأيقونة
     function toggleMode() {
       document.body.classList.toggle('light');
-      var icon = document.body.classList.contains('light') ? '🌙' : '☀️';
+      var icon = document.body.classList.contains('light') ? '☀️' : '🌙';
       document.getElementById('modeBtn').textContent = icon;
       document.getElementById('modeBtnMob').textContent = icon;
     }
@@ -511,7 +527,7 @@
       btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
     });
 
-    // LANGUAGE - بدون تغيير dir عشان ما يتحرك الناف بار
+    // LANGUAGE
     var currentLang = 'ar';
     function toggleLang() {
       currentLang = currentLang === 'ar' ? 'en' : 'ar';
@@ -533,6 +549,9 @@
       if (name) {
         document.getElementById('welcomeMsg').textContent = currentLang === 'ar' ? 'مرحباً بعودتك، ' + name + ' ✨' : 'Welcome back, ' + name + ' ✨';
       }
+      // تحديث التولتيب عند تغيير اللغة
+      document.getElementById('waFloat').setAttribute('data-tooltip', currentLang === 'ar' ? 'واتساب' : 'WhatsApp');
+      document.getElementById('igFloat').setAttribute('data-tooltip', currentLang === 'ar' ? 'انستاقرام' : 'Instagram');
     }
 
     // VISITOR
@@ -588,31 +607,31 @@
     });
 
     // CONTACT FORM
-function handleFormSubmit(e) {
-    e.preventDefault();
-    var status = document.getElementById('cf-status');
-    var btn = document.getElementById('cf-submit');
-    btn.disabled = true;
-    btn.textContent = currentLang === 'ar' ? 'جاري الإرسال...' : 'Sending...';
-    fetch(e.target.action, {
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      var status = document.getElementById('cf-status');
+      var btn = document.getElementById('cf-submit');
+      btn.disabled = true;
+      btn.textContent = currentLang === 'ar' ? 'جاري الإرسال...' : 'Sending...';
+      fetch(e.target.action, {
         method: 'POST',
         body: new FormData(e.target),
         headers: { 'Accept': 'application/json' }
-    })
-    .then(function(r) {
+      })
+      .then(function(r) {
         status.textContent = r.ok
-            ? (currentLang === 'ar' ? '✅ تم الإرسال بنجاح!' : '✅ Message sent!')
-            : (currentLang === 'ar' ? '❌ حدث خطأ!' : '❌ Error!');
+          ? (currentLang === 'ar' ? '✅ تم الإرسال بنجاح!' : '✅ Message sent!')
+          : (currentLang === 'ar' ? '❌ حدث خطأ!' : '❌ Error!');
         if (r.ok) e.target.reset();
-    })
-    .catch(function() {
+      })
+      .catch(function() {
         status.textContent = currentLang === 'ar' ? '❌ تأكد من اتصالك.' : '❌ Check connection.';
-    })
-    .finally(function() {
+      })
+      .finally(function() {
         btn.textContent = currentLang === 'ar' ? 'إرسال الرسالة' : 'Send Message';
         btn.disabled = false;
-    });
-}
+      });
+    }
 
     // WEATHER
     function getWeather() {
