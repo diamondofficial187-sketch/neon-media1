@@ -78,30 +78,6 @@
     .service-card h3 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 12px; }
     .service-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
 
-    .grid-container { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 40px; }
-    .grid-item { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; font-family: 'Tajawal', sans-serif; color: var(--text); transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; cursor: pointer; }
-    .grid-item:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,255,204,0.1); border-color: var(--neon); }
-    .grid-item-img { width: 100%; height: 180px; object-fit: cover; display: block; transition: transform 0.4s; }
-    .grid-item:hover .grid-item-img { transform: scale(1.05); }
-    .grid-item-body { padding: 20px; text-align: center; }
-    .grid-item-body .service-icon { font-size: 28px; margin-bottom: 8px; }
-    .grid-item h3 { font-size: 16px; font-weight: 700; color: #fff; margin: 8px 0 6px; }
-    .grid-item p { font-size: 13px; color: var(--muted); }
-    .grid-item-overlay { display: inline-block; margin-top: 10px; font-size: 12px; color: var(--neon); border: 1px solid var(--border); border-radius: 6px; padding: 5px 14px; letter-spacing: 1px; }
-
-    #lightbox { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(5,10,14,0.96); backdrop-filter: blur(12px); align-items: center; justify-content: center; flex-direction: column; padding: 20px; cursor: zoom-out; }
-    #lightbox.open { display: flex; }
-    #lb-close { position: fixed; top: 24px; right: 24px; background: transparent; border: 1.5px solid var(--border); color: var(--neon); width: 44px; height: 44px; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 9001; }
-    #lb-close:hover { border-color: var(--neon); box-shadow: 0 0 14px var(--neon); }
-    #lb-prev, #lb-next { position: fixed; top: 50%; transform: translateY(-50%); background: transparent; border: 1.5px solid var(--border); color: var(--neon); width: 44px; height: 44px; border-radius: 50%; font-size: 18px; cursor: pointer; z-index: 9001; }
-    #lb-prev { right: 24px; }
-    #lb-next { left: 24px; }
-    #lb-prev:hover, #lb-next:hover { border-color: var(--neon); box-shadow: 0 0 14px var(--neon); }
-    #lb-img { max-width: 85vw; max-height: 70vh; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 0 60px rgba(0,255,204,0.15); object-fit: contain; cursor: default; }
-    #lb-title { font-family: 'Orbitron', sans-serif; color: var(--neon); font-size: 16px; letter-spacing: 2px; margin: 20px 0 6px; text-align: center; }
-    #lb-desc { color: var(--muted); font-size: 14px; text-align: center; }
-    #lb-counter { color: var(--muted); font-size: 12px; font-family: 'Orbitron', sans-serif; letter-spacing: 2px; margin-top: 8px; }
-
     .price-featured { border-color: var(--neon) !important; }
     .price-badge { display: inline-block; font-size: 11px; letter-spacing: 2px; background: rgba(0,255,204,0.1); color: var(--neon); border: 1px solid var(--border); border-radius: 20px; padding: 4px 14px; margin-bottom: 12px; font-family: 'Orbitron', sans-serif; }
     .price-num { font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 900; color: var(--neon); margin: 12px 0; }
@@ -140,11 +116,15 @@
     .welcome-box input::placeholder { color: var(--muted); }
     #welcomeMsg { margin-top: 18px; font-size: 17px; color: var(--neon); min-height: 24px; font-weight: 700; }
 
-    .weather-box { max-width: 500px; margin: 40px auto; text-align: center; }
-    .weather-box input { padding: 13px 18px; font-size: 15px; font-family: 'Tajawal', sans-serif; border-radius: 8px; border: 1.5px solid var(--border); background: rgba(0,255,204,0.03); color: var(--neon); outline: none; width: 60%; margin-bottom: 15px; }
-    .weather-box input:focus { border-color: var(--neon); }
-    .weather-box input::placeholder { color: var(--muted); }
-    #weatherResult { margin-top: 20px; font-size: 20px; color: var(--neon); font-family: 'Orbitron', sans-serif; line-height: 1.8; }
+    /* ===== قسم كيف نعمل ===== */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 60px; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 60px; right: 10%; left: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--neon), var(--neon), transparent); opacity: 0.25; z-index: 0; }
+    .step-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 36px 28px; text-align: center; position: relative; z-index: 1; transition: border-color 0.35s, transform 0.3s, box-shadow 0.35s; }
+    .step-card:hover { border-color: var(--neon); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,255,204,0.1); }
+    .step-num { font-family: 'Orbitron', sans-serif; font-size: 11px; letter-spacing: 3px; color: var(--neon); margin-bottom: 16px; display: block; }
+    .step-icon { font-size: 40px; margin-bottom: 16px; display: block; filter: drop-shadow(0 0 8px rgba(0,255,204,0.5)); }
+    .step-card h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .step-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
     #toTop { position: fixed; bottom: 30px; left: 30px; z-index: 999; width: 44px; height: 44px; border-radius: 50%; background: var(--neon); color: #050a0e; font-size: 18px; border: none; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 0 20px var(--neon); transition: transform 0.2s; }
     #toTop:hover { transform: translateY(-3px); }
@@ -161,57 +141,42 @@
     body.light { --bg: #f0f4f4; --surface: rgba(0,180,140,0.06); --border: rgba(0,150,120,0.2); --text: #1a2e2b; --muted: rgba(0,100,80,0.6); --neon: #00a88a; --neon2: #cc00bb; }
     body.light #grid-bg { background-image: linear-gradient(rgba(0,150,120,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,150,120,0.07) 1px, transparent 1px); }
     body.light nav { background: rgba(240,244,244,0.9); }
-    body.light h1.hero-title, body.light .section-title, body.light .service-card h3, body.light .grid-item h3 { color: #0a1e1c; }
+    body.light h1.hero-title, body.light .section-title, body.light .service-card h3, body.light .grid-item h3, body.light .step-card h3 { color: #0a1e1c; }
 
     /* الأزرار العائمة */
-    .wa-float, .ig-float {
-      position: fixed; right: 30px; z-index: 999; width: 54px; height: 54px;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 26px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-    }
+    .wa-float, .ig-float { position: fixed; right: 30px; z-index: 999; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
     .wa-float { bottom: 30px; background: #25d366; box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
     .ig-float { bottom: 95px; background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); box-shadow: 0 4px 20px rgba(220,39,67,0.5); }
     .wa-float:hover, .ig-float:hover { transform: scale(1.1); }
-
-    /* التولتيب */
-    .wa-float::before, .ig-float::before {
-      content: attr(data-tooltip);
-      position: absolute; right: 64px;
-      background: rgba(5,10,14,0.9); color: var(--neon);
-      font-family: 'Tajawal', sans-serif; font-size: 13px;
-      padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border);
-      white-space: nowrap; opacity: 0; pointer-events: none;
-      transition: opacity 0.2s;
-    }
+    .wa-float::before, .ig-float::before { content: attr(data-tooltip); position: absolute; right: 64px; background: rgba(5,10,14,0.9); color: var(--neon); font-family: 'Tajawal', sans-serif; font-size: 13px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .wa-float:hover::before, .ig-float:hover::before { opacity: 1; }
 
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: 1.5px solid var(--border); padding: 8px 10px; border-radius: 8px; cursor: pointer; }
-  .hamburger span { display: block; width: 20px; height: 2px; background: var(--neon); border-radius: 2px; transition: all 0.3s; }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 99; background: rgba(5,10,14,0.97); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); padding: 20px 5%; flex-direction: column; }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { color: var(--muted); font-size: 16px; text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--border); font-family: 'Tajawal', sans-serif; }
-  .mobile-menu a:last-of-type { border-bottom: none; }
-  #about .about-grid { grid-template-columns: 1fr; }
-  .grid-container { grid-template-columns: 1fr 1fr; }
-  .nav-links { gap: 10px; }
-  .nav-links a { font-size: 11px; }
-  .nav-logo { font-size: 14px; letter-spacing: 1px; }
-  .contact-inner { padding: 28px 16px; }
-  .contact-item { font-size: 13px; padding: 12px 14px; }
-  .input-row { flex-direction: column; }
-  footer { flex-direction: column; text-align: center; }
-}
-@media (max-width: 480px) { .grid-container { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: 1.5px solid var(--border); padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+      .hamburger span { display: block; width: 20px; height: 2px; background: var(--neon); border-radius: 2px; transition: all 0.3s; }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 99; background: rgba(5,10,14,0.97); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); padding: 20px 5%; flex-direction: column; }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a { color: var(--muted); font-size: 16px; text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--border); font-family: 'Tajawal', sans-serif; }
+      .mobile-menu a:last-of-type { border-bottom: none; }
+      #about .about-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 10px; }
+      .nav-links a { font-size: 11px; }
+      .nav-logo { font-size: 14px; letter-spacing: 1px; }
+      .contact-inner { padding: 28px 16px; }
+      .contact-item { font-size: 13px; padding: 12px 14px; }
+      .input-row { flex-direction: column; }
+      footer { flex-direction: column; text-align: center; }
+      .steps-grid::before { display: none; }
+    }
 
-@media (min-width: 769px) {
-  #langBtnMob, #modeBtnMob { display: none; }
-  .hamburger { display: none; }
-}
+    @media (min-width: 769px) {
+      #langBtnMob, #modeBtnMob { display: none; }
+      .hamburger { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -219,19 +184,9 @@
   <div id="grid-bg"></div>
   <button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-  <div id="lightbox" onclick="closeLightbox()">
-    <button id="lb-close" onclick="closeLightbox()">✕</button>
-    <button id="lb-prev" onclick="event.stopPropagation();lbNav(-1)">‹</button>
-    <button id="lb-next" onclick="event.stopPropagation();lbNav(1)">›</button>
-    <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
-    <h3 id="lb-title"></h3>
-    <p id="lb-desc"></p>
-    <p id="lb-counter"></p>
-  </div>
-
-<nav>
+  <nav>
     <span class="nav-logo">NEON MEDIA</span>
-<div style="display:flex; align-items:center; gap:10px;">
+    <div style="display:flex; align-items:center; gap:10px;">
       <button class="lang-btn" onclick="toggleLang()" id="langBtnMob">EN</button>
       <button class="nav-toggle" onclick="toggleMode()" id="modeBtnMob">🌙</button>
       <button class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -247,7 +202,7 @@
       <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
       <button class="nav-toggle" id="modeBtn" onclick="toggleMode()">🌙</button>
     </div>
-</nav>
+  </nav>
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home"     onclick="closeMenu()">الرئيسية</a>
@@ -315,38 +270,7 @@
     </div>
   </section>
 
-  <section id="portfolio">
-    <div class="reveal">
-      <p class="section-label" data-ar="أعمالنا" data-en="Our Work">أعمالنا</p>
-      <h2 class="section-title" data-ar="مشاريع <span>مختارة</span>" data-en="Selected <span>Projects</span>">مشاريع <span>مختارة</span></h2>
-    </div>
-    <div class="grid-container reveal">
-      <div class="grid-item" onclick="openLightbox(0)">
-        <img class="grid-item-img" src="https://picsum.photos/seed/logo/600/400" alt="Logo Design">
-        <div class="grid-item-body"><div class="service-icon">🎨</div><h3 data-ar="تصميم شعار" data-en="Logo Design">تصميم شعار</h3><p data-ar="تصميم شعار لشركة تقنية" data-en="Logo for a tech company">تصميم شعار لشركة تقنية</p><span class="grid-item-overlay" data-ar="عرض المشروع ↗" data-en="View Project ↗">عرض المشروع ↗</span></div>
-      </div>
-      <div class="grid-item" onclick="openLightbox(1)">
-        <img class="grid-item-img" src="https://picsum.photos/seed/web/600/400" alt="Web Development">
-        <div class="grid-item-body"><div class="service-icon">💻</div><h3 data-ar="تطوير موقع" data-en="Web Development">تطوير موقع</h3><p data-ar="موقع متكامل لمتجر إلكتروني" data-en="Full e-commerce website">موقع متكامل لمتجر إلكتروني</p><span class="grid-item-overlay" data-ar="عرض المشروع ↗" data-en="View Project ↗">عرض المشروع ↗</span></div>
-      </div>
-      <div class="grid-item" onclick="openLightbox(2)">
-        <img class="grid-item-img" src="https://picsum.photos/seed/social/600/400" alt="Social Media">
-        <div class="grid-item-body"><div class="service-icon">📱</div><h3 data-ar="سوشيال ميديا" data-en="Social Media">سوشيال ميديا</h3><p data-ar="إدارة وسائل التواصل الاجتماعي" data-en="Social Media Management">إدارة وسائل التواصل الاجتماعي</p><span class="grid-item-overlay" data-ar="عرض المشروع ↗" data-en="View Project ↗">عرض المشروع ↗</span></div>
-      </div>
-      <div class="grid-item" onclick="openLightbox(3)">
-        <img class="grid-item-img" src="https://picsum.photos/seed/video/600/400" alt="Video Editing">
-        <div class="grid-item-body"><div class="service-icon">🎬</div><h3 data-ar="مونتاج فيديو" data-en="Video Editing">مونتاج فيديو</h3><p data-ar="مونتاج إعلان تجاري" data-en="Commercial advertisement">مونتاج إعلان تجاري</p><span class="grid-item-overlay" data-ar="عرض المشروع ↗" data-en="View Project ↗">عرض المشروع ↗</span></div>
-      </div>
-      <div class="grid-item" onclick="openLightbox(4)">
-        <img class="grid-item-img" src="https://picsum.photos/seed/brand/600/400" alt="Brand Identity">
-        <div class="grid-item-body"><div class="service-icon">🖼️</div><h3 data-ar="هوية بصرية" data-en="Brand Identity">هوية بصرية</h3><p data-ar="هوية بصرية كاملة لعلامة تجارية" data-en="Complete visual identity">هوية بصرية كاملة</p><span class="grid-item-overlay" data-ar="عرض المشروع ↗" data-en="View Project ↗">عرض المشروع ↗</span></div>
-      </div>
-      <div class="grid-item" onclick="openLightbox(5)">
-        <img class="grid-item-img" src="https://picsum.photos/seed/market/600/400" alt="Marketing">
-        <div class="grid-item-body"><div class="service-icon">📊</div><h3 data-ar="تسويق رقمي" data-en="Marketing">تسويق رقمي</h3><p data-ar="خطة تسويقية رقمية متكاملة" data-en="Digital marketing strategy">خطة تسويقية رقمية</p><span class="grid-item-overlay" data-ar="عرض المشروع ↗" data-en="View Project ↗">عرض المشروع ↗</span></div>
-      </div>
-    </div>
-  </section>
+  <!-- ✦ قسم الأعمال محذوف مؤقتاً — يُضاف لاحقاً بعد ترتيب الصور والفيديوهات ✦ -->
 
   <section id="pricing">
     <div class="reveal">
@@ -411,7 +335,7 @@
       <div class="service-card reveal">
         <div class="quote-mark">"</div>
         <p data-ar="سرعة التنفيذ ودقة التصميم لا مثيل لهما!" data-en="Unmatched speed and design precision!">سرعة التنفيذ ودقة التصميم لا مثيل لهما!</p>
-        <div class="testimonial-author"><div class="author-avatar">خ</div><div><div class="author-name">خالد المنصور</div><div class="author-role" data-ar="مدير تسويق" data-en="Marketing Director">مدير تسويق</div></div></div>
+        <div class="testimonial-author"><div class="author-avatar">خ</div><div><div class="author-name">خالد المنصوري</div><div class="author-role" data-ar="مدير تسويق" data-en="Marketing Director">مدير تسويق</div></div></div>
       </div>
     </div>
   </section>
@@ -451,13 +375,31 @@
     </div>
   </div>
 
-  <section id="weather">
-    <p class="section-label" data-ar="بيانات مباشرة" data-en="Live Data">بيانات مباشرة</p>
-    <h2 class="section-title" data-ar="الطقس <span>مباشر</span>" data-en="Live <span>Weather</span>">الطقس <span>مباشر</span></h2>
-    <div class="weather-box">
-      <input type="text" id="cityInput" placeholder="اكتب اسم المدينة..." data-placeholder-ar="اكتب اسم المدينة..." data-placeholder-en="Enter city name...">
-      <button class="btn-primary" onclick="getWeather()" data-ar="🌍 ابحث" data-en="🌍 Search">🌍 ابحث</button>
-      <div id="weatherResult"></div>
+  <!-- ===== قسم كيف نعمل (بديل الطقس) ===== -->
+  <section id="how-we-work">
+    <div class="reveal">
+      <p class="section-label" data-ar="طريقة عملنا" data-en="Our Process">طريقة عملنا</p>
+      <h2 class="section-title" data-ar="كيف <span>نعمل معك؟</span>" data-en="How We <span>Work With You</span>">كيف <span>نعمل معك؟</span></h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <span class="step-num" data-ar="الخطوة 01" data-en="STEP 01">الخطوة 01</span>
+        <span class="step-icon">💬</span>
+        <h3 data-ar="الاستشارة" data-en="Consultation">الاستشارة</h3>
+        <p data-ar="نجلس معك، نفهم رؤيتك وأهدافك، ونضع خطة واضحة قبل أي خطوة." data-en="We sit with you, understand your vision and goals, and set a clear plan before any step.">نجلس معك، نفهم رؤيتك وأهدافك، ونضع خطة واضحة قبل أي خطوة.</p>
+      </div>
+      <div class="step-card reveal">
+        <span class="step-num" data-ar="الخطوة 02" data-en="STEP 02">الخطوة 02</span>
+        <span class="step-icon">🎨</span>
+        <h3 data-ar="التصميم والتطوير" data-en="Design & Development">التصميم والتطوير</h3>
+        <p data-ar="نبدأ بالإبداع — تصميم، برمجة، ومراجعات مستمرة حتى تصل للمثالية." data-en="We start creating — design, development, and continuous revisions until perfection.">نبدأ بالإبداع — تصميم، برمجة، ومراجعات مستمرة حتى تصل للمثالية.</p>
+      </div>
+      <div class="step-card reveal">
+        <span class="step-num" data-ar="الخطوة 03" data-en="STEP 03">الخطوة 03</span>
+        <span class="step-icon">🚀</span>
+        <h3 data-ar="التسليم والدعم" data-en="Delivery & Support">التسليم والدعم</h3>
+        <p data-ar="نسلّمك مشروعك جاهزاً ونبقى معك بعد التسليم لضمان نجاحك." data-en="We deliver your project ready and stay with you after launch to ensure your success.">نسلّمك مشروعك جاهزاً ونبقى معك بعد التسليم لضمان نجاحك.</p>
+      </div>
     </div>
   </section>
 
@@ -508,7 +450,7 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(function(el) { revObs.observe(el); });
 
-    // MODE - تم إصلاح الأيقونة
+    // MODE
     function toggleMode() {
       document.body.classList.toggle('light');
       var icon = document.body.classList.contains('light') ? '☀️' : '🌙';
@@ -549,7 +491,6 @@
       if (name) {
         document.getElementById('welcomeMsg').textContent = currentLang === 'ar' ? 'مرحباً بعودتك، ' + name + ' ✨' : 'Welcome back, ' + name + ' ✨';
       }
-      // تحديث التولتيب عند تغيير اللغة
       document.getElementById('waFloat').setAttribute('data-tooltip', currentLang === 'ar' ? 'واتساب' : 'WhatsApp');
       document.getElementById('igFloat').setAttribute('data-tooltip', currentLang === 'ar' ? 'انستاقرام' : 'Instagram');
     }
@@ -568,43 +509,6 @@
       }
     }
     showWelcome();
-
-    // LIGHTBOX
-    var lbProjects = [
-      { img:'https://picsum.photos/seed/logo/1200/800',   titleAr:'تصميم شعار',   titleEn:'Logo Design',     descAr:'تصميم شعار لشركة تقنية',  descEn:'Logo for a tech company' },
-      { img:'https://picsum.photos/seed/web/1200/800',    titleAr:'تطوير ويب',    titleEn:'Web Development', descAr:'موقع متكامل لمتجر',        descEn:'Full e-commerce website' },
-      { img:'https://picsum.photos/seed/social/1200/800', titleAr:'سوشيال ميديا', titleEn:'Social Media',    descAr:'إدارة حساب لمطعم',         descEn:'Instagram management' },
-      { img:'https://picsum.photos/seed/video/1200/800',  titleAr:'مونتاج فيديو', titleEn:'Video Editing',   descAr:'مونتاج إعلان تجاري',       descEn:'Commercial advertisement' },
-      { img:'https://picsum.photos/seed/brand/1200/800',  titleAr:'هوية بصرية',   titleEn:'Brand Identity',  descAr:'هوية بصرية كاملة',         descEn:'Complete brand identity' },
-      { img:'https://picsum.photos/seed/market/1200/800', titleAr:'تسويق رقمي',   titleEn:'Marketing',       descAr:'خطة تسويقية رقمية',        descEn:'Digital marketing strategy' }
-    ];
-    var lbIndex = 0;
-    function openLightbox(i) {
-      lbIndex = i; renderLb();
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function renderLb() {
-      var p = lbProjects[lbIndex];
-      document.getElementById('lb-img').src = p.img;
-      document.getElementById('lb-title').textContent = currentLang === 'ar' ? p.titleAr : p.titleEn;
-      document.getElementById('lb-desc').textContent = currentLang === 'ar' ? p.descAr : p.descEn;
-      document.getElementById('lb-counter').textContent = (lbIndex+1) + ' / ' + lbProjects.length;
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    function lbNav(dir) {
-      lbIndex = (lbIndex + dir + lbProjects.length) % lbProjects.length;
-      renderLb();
-    }
-    document.addEventListener('keydown', function(e) {
-      if (!document.getElementById('lightbox').classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') lbNav(1);
-      if (e.key === 'ArrowLeft') lbNav(-1);
-    });
 
     // CONTACT FORM
     function handleFormSubmit(e) {
@@ -631,27 +535,6 @@
         btn.textContent = currentLang === 'ar' ? 'إرسال الرسالة' : 'Send Message';
         btn.disabled = false;
       });
-    }
-
-    // WEATHER
-    function getWeather() {
-      var city = document.getElementById('cityInput').value.trim();
-      if (!city) return;
-      var res = document.getElementById('weatherResult');
-      res.textContent = currentLang === 'ar' ? '⏳ جاري البحث...' : '⏳ Loading...';
-      fetch('https://geocoding-api.open-meteo.com/v1/search?name=' + encodeURIComponent(city) + '&count=1&language=en')
-        .then(function(r) { return r.json(); })
-        .then(function(g) {
-          if (!g.results || !g.results.length) { res.textContent = currentLang === 'ar' ? '❌ المدينة غير موجودة!' : '❌ City not found!'; return; }
-          var loc = g.results[0];
-          return fetch('https://api.open-meteo.com/v1/forecast?latitude=' + loc.latitude + '&longitude=' + loc.longitude + '&current_weather=true')
-            .then(function(r) { return r.json(); })
-            .then(function(w) {
-              var cw = w.current_weather;
-              res.innerHTML = '📍 ' + loc.name + ', ' + loc.country + '<br>🌡️ ' + cw.temperature + '°C<br>💨 ' + cw.windspeed + ' km/h';
-            });
-        })
-        .catch(function() { res.textContent = currentLang === 'ar' ? '❌ حدث خطأ!' : '❌ Error!'; });
     }
   </script>
 </body>
